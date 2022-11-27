@@ -33,7 +33,12 @@ $favicon->setDefaultIcon($defaultIco);
 /**
  * 检测URL参数
  */
-$url = $_GET['url'];
+$url=$_GET['url'];
+$preg = "/^http(s)?:\\/.+/";
+if(preg_match($preg,$url))
+{
+    $url= preg_replace("#https?:/#",'',$url);
+}
 
 /*
  * 格式化 URL, 并尝试读取缓存
